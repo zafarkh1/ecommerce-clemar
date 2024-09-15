@@ -13,12 +13,12 @@ function Showcase() {
 
   const renderSkeletons = () => (
     <div>
-      <Skeleton className="showcaseSkeleton" />
+      <Skeleton className="showcaseSkeleton" borderRadius="0.5rem" />
     </div>
   );
 
   return (
-    <div className="myContainer slider-container relative">
+    <div className="myContainer slider-container relative lg:mt-0 mt-28">
       {loading ? (
         renderSkeletons()
       ) : (

@@ -12,7 +12,7 @@ function Choose() {
         .fill()
         .map((_, index) => (
           <div key={index}>
-            <Skeleton height="80px" style={{ borderRadius: "0.5rem" }} />
+            <Skeleton height="80px" borderRadius="0.5rem" />
           </div>
         ))}
     </div>

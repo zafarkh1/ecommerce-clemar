@@ -2,20 +2,39 @@ import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import Skeleton from "react-loading-skeleton";
 import BestProducts from "../components/BestProducts";
-import SkeletonCard from "../utils/SkeletonCard";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
 import { useLangStore } from "../zustand/useLangStore";
 import { useTranslation } from "react-i18next";
 import { useModalStore } from "../zustand/useModalStore";
 import MessageModal from "../utils/Modal";
+import { useEffect, useState } from "react";
 
 function Product(props) {
+  const [skeletonCount, setSkeletonCount] = useState(4);
   const { name } = useParams();
   const { allProductsData, loading } = useApiData();
   const { currentLanguage } = useLangStore();
   const { t } = useTranslation();
   const { openModal } = useModalStore();
+
+  useEffect(() => {
+    const updateSkeletonCount = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setSkeletonCount(2); // 2 skeletons on small screens
+      } else {
+        setSkeletonCount(4); // 4 skeletons on large screens
+      }
+    };
+
+    updateSkeletonCount(); // Initial check
+    window.addEventListener("resize", updateSkeletonCount);
+
+    return () => {
+      window.removeEventListener("resize", updateSkeletonCount);
+    };
+  }, []);
 
   const getItemName = (item) => {
     if (currentLanguage === "uz") return item?.name_uz;
@@ -81,24 +100,27 @@ function Product(props) {
 
   return (
     <>
-      <div className="myContainer">
+      <div className="myContainer lg:mt-0 mt-28">
         <h2 className="heading2">
-          {loading ? <Skeleton width="400px" /> : getItemName(product)}
+          {loading ? <Skeleton width="60%" /> : getItemName(product)}
         </h2>
 
         <div className="flex lg:flex-row justify-between flex-col lg:gap-10 lg:mt-10 mt-6">
           {/* Images */}
           <div className="flex flex-col items-center lg:w-1/3 w-full">
             {/* Main Image */}
-            <div className="lg:mb-4 mb-2">
+            <div className="lg:mb-4 mb-2 w-full">
               {loading ? (
-                <Skeleton height="500px" />
+                // Render Skeleton with fixed height and width
+                <Skeleton className="mainImgSkeleton" borderRadius="0.5rem" />
               ) : (
+                // Render Image only if not loading
                 product && (
                   <img
                     src={product.image1}
                     alt={getItemName(product)}
                     className="w-full h-auto object-cover"
+                    style={{ aspectRatio: "4 / 3", objectFit: "cover" }} // Aspect ratio for consistency
                   />
                 )
               )}
@@ -107,7 +129,20 @@ function Product(props) {
             {/* Slider Images */}
             <div className="w-full">
               {loading ? (
-                <SkeletonCard gridLg={4} height="150px" size={4} />
+                <div
+                  className={`grid lg:grid-cols-4 grid-cols-2 lg:gap-6 gap-2`}
+                >
+                  {Array(skeletonCount)
+                    .fill()
+                    .map((_, index) => (
+                      <div key={index}>
+                        <Skeleton
+                          className="trustSkeleton"
+                          borderRadius="0.5rem"
+                        />
+                      </div>
+                    ))}
+                </div>
               ) : (
                 <Slider {...sliderSettings}>
                   {images?.map((image, index) => (
@@ -116,6 +151,11 @@ function Product(props) {
                         src={image}
                         alt={`${index + 1}`}
                         className="cursor-pointer border-2 rounded-lg"
+                        style={{
+                          width: "100%",
+                          height: "150px", // Fixed height for slider images
+                          objectFit: "cover", // Ensure images don't overflow
+                        }}
                       />
                     </div>
                   ))}
@@ -174,7 +214,9 @@ function Product(props) {
       </div>
 
       {/* Best products */}
-      <BestProducts />
+      <div className="lg:mb-10 mb-8">
+        <BestProducts />
+      </div>
       <MessageModal />
     </>
   );

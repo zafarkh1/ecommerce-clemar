@@ -36,7 +36,10 @@ function CategoryProducts(props) {
               .fill()
               .map((_, index) => (
                 <div key={index}>
-                  <Skeleton className="categoryProductsSkeleton" />
+                  <Skeleton
+                    className="categoryProductsSkeleton"
+                    borderRadius="0.5rem"
+                  />
                 </div>
               ))}
           </div>

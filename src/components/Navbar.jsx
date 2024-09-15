@@ -88,7 +88,7 @@ function Navbar(props) {
         {/* Logo & Catalog */}
         <div className="lg:col-start-1 lg:col-span-3 col-span-full flexBetween lg:gap-8 gap-4 lg:mb-0 mb-4">
           <button
-            className="flexBetween bg-primary text-white lg:px-5 px-2 py-2 rounded-md hover:bg-primary-dark transition duration-300"
+            className="flexBetween bg-primary text-white lg:px-5 px-2 lg:py-2 py-1 rounded-md hover:bg-primary-dark transition duration-300"
             onClick={() => setIsCatalogOpen(!isCatalogOpen)}
           >
             <span className="icon mr-2">
