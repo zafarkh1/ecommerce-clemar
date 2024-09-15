@@ -1,11 +1,10 @@
 import { MdOutlineLocationOn, MdKeyboardArrowDown } from "react-icons/md";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLangStore } from "../zustand/useLangStore";
 
 function NavbarLng() {
-  const dropdownRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const { t, i18n } = useTranslation();
   const { currentLanguage, setCurrentLanguage } = useLangStore();

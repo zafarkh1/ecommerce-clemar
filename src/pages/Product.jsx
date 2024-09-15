@@ -111,7 +111,7 @@ function Product(props) {
                     <div key={index} className="lg:px-3 px-2">
                       <img
                         src={image}
-                        alt={`Image ${index + 1}`}
+                        alt={`${index + 1}`}
                         className="cursor-pointer border-2 rounded-lg"
                       />
                     </div>
