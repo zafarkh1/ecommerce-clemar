@@ -1,13 +1,15 @@
 import { MdMenu, MdOutlineSearch } from "react-icons/md";
 import { IoHeartOutline } from "react-icons/io5";
-import { useStore } from "../utils/useStore";
+import { useStore } from "../zustand/useStore";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function Navbar(props) {
   const { favorites } = useStore();
   const navigate = useNavigate();
+  const { t } = useTranslation(); // Get translation function from i18next
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navbarHeight = 300;
@@ -35,15 +37,15 @@ function Navbar(props) {
       } transition-all duration-500`}
     >
       <div
-        className={`myContainer grid lg:grid-cols-12 grid-cols-3 items-center  `}
+        className={`myContainer grid lg:grid-cols-12 grid-cols-3 items-center`}
       >
-        {/*                Logo && Catalog            */}
+        {/* Logo & Catalog */}
         <div className="lg:col-start-1 lg:col-span-3 col-span-full flexBetween lg:gap-8 gap-4 lg:mb-0 mb-2">
           <button className="flexBetween bg-primary text-white lg:px-5 px-2 lg:py-2 py-1 rounded-md hover:bg-primary-dark transition duration-300">
             <span className="icon mr-2">
               <MdMenu />
             </span>
-            <span className="text">Catalog</span>
+            <span className="text">{t("navbar.catalog")}</span>
           </button>
 
           <Link
@@ -70,17 +72,17 @@ function Navbar(props) {
               window.scroll(0, 0);
             }}
           >
-            About us
+            {t("navbar.aboutUs")}
           </p>
         </div>
 
-        {/*                      Search input                 */}
+        {/* Search input */}
         <div className="lg:col-start-5 lg:col-span-5 col-span-2">
           <div className="flexBetween border border-gray-300 rounded-md overflow-hidden w-full shadow-sm">
             <input
               type="text"
               className="outline-none lg:px-4 px-2 lg:py-2 py-1 w-full text"
-              placeholder="Search in catalog"
+              placeholder={t("navbar.searchPlaceholder")}
             />
             <button className="bg-primary text-white hover:bg-primary-dark lg:w-16 w-8 lg:h-10 h-8 flexCenter justify-center">
               <MdOutlineSearch className="icon" />
@@ -88,7 +90,7 @@ function Navbar(props) {
           </div>
         </div>
 
-        {/*                          Like && About us           */}
+        {/* Like & About us */}
         <div className="lg:col-start-10 lg:col-span-3 flex items-center justify-end gap-8 col-span-1">
           <p
             className="hover:text-primary transition duration-300 cursor-pointer hidden lg:block text-lg font-medium"
@@ -97,7 +99,7 @@ function Navbar(props) {
               window.scroll(0, 0);
             }}
           >
-            About us
+            {t("navbar.aboutUs")}
           </p>
           <div
             className="flexBetween gap-2 cursor-pointer hover:text-primary transition duration-300"
@@ -112,7 +114,9 @@ function Navbar(props) {
                 {favorites.length || 0}
               </span>
             </div>
-            <span className="font-medium lg:text-lg">Favourites</span>
+            <span className="font-medium lg:text-lg">
+              {t("navbar.favourites")}
+            </span>
           </div>
         </div>
       </div>

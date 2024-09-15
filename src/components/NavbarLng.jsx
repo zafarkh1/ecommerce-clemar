@@ -1,7 +1,23 @@
 import { MdOutlineLocationOn, MdKeyboardArrowDown } from "react-icons/md";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useLangStore } from "../zustand/useLangStore";
 
-function NavbarLng(props) {
+function NavbarLng() {
+  const dropdownRef = useRef(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const { t, i18n } = useTranslation();
+  const { currentLanguage, setCurrentLanguage } = useLangStore();
+
+  const languages = ["uz", "en", "ru"];
+
+  const handleLanguageChange = (lang) => {
+    i18n.changeLanguage(lang);
+    setCurrentLanguage(lang);
+    setShowDropdown(false);
+  };
+
   const items = [
     {
       title: "Instagram",
@@ -23,14 +39,17 @@ function NavbarLng(props) {
           <span className="text-2xl lg:text-xl icon">
             <MdOutlineLocationOn />
           </span>
-          <span className="text lg:text-base">Location:</span>
+          <span className="text lg:text-base">
+            {t("navbarLng.txtLocation")}
+          </span>{" "}
+          {/* Translated text */}
           <a
             href="https://www.google.com/maps/place/Tashkent"
             target="_blank"
             rel="noopener noreferrer"
             className="text underline hover:text-gray-300 transition-colors duration-300"
           >
-            Tashkent
+            {t("navbarLng.txtTashkent")} {/* Translated city name */}
           </a>
         </div>
 
@@ -45,7 +64,8 @@ function NavbarLng(props) {
                 rel="noopener noreferrer"
               >
                 <span className="text-2xl">{item.icon}</span>{" "}
-                <span className="text lg:text-base">{item.title}</span>
+                <span className="text lg:text-base">{t(item.title)}</span>{" "}
+                {/* Translated titles */}
               </a>
             </li>
           ))}
@@ -57,15 +77,33 @@ function NavbarLng(props) {
               +998 55 500 14 11
             </a>
           </li>
-          <li className="flexBetween text lg:text-base">
-            <span>Eng</span>
+          <li
+            className="relative flexBetween text lg:text-base cursor-pointer"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <span>{currentLanguage.toUpperCase()}</span>
             <span className="text-2xl">
               <MdKeyboardArrowDown />
             </span>
+            <ul
+              className={`absolute left-0 top-8 z-30 px-4 py-2 rounded-lg bg-gray-600 transition-all duration-300 ${
+                showDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+            >
+              {languages.map((lang, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleLanguageChange(lang)}
+                  className="hover:text-gray-300 cursor-pointer transition-colors duration-300"
+                >
+                  {lang.toUpperCase()}
+                </li>
+              ))}
+            </ul>
           </li>
           <li className="hidden lg:block">
             <button className="px-6 py-3 rounded-md text-primary bg-white font-medium hover:bg-gray-100 hover:shadow-md active:scale-105 transition-all duration-300">
-              Get a bonus
+              {t("navbarLng.btnBonus")}
             </button>
           </li>
         </ul>

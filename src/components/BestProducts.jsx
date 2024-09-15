@@ -3,9 +3,11 @@ import ProductCard from "../utils/ProductCard";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
 import SkeletonCard from "../utils/SkeletonCard";
+import { useTranslation } from "react-i18next";
 
 function BestProducts(props) {
   const { bestProductsData, loading } = useApiData();
+  const { t } = useTranslation();
 
   const sliderSettings = {
     ...customSliderSettings,
@@ -29,7 +31,7 @@ function BestProducts(props) {
 
   return (
     <div className="myContainer">
-      <h2 className="heading2">Best Products</h2>
+      <h2 className="heading2">{t("bestProducts.heading")}</h2>
       <div className="lg:mt-10 mt-4">
         {loading ? (
           <SkeletonCard height="300px" size={4} gridLg={4} />

@@ -1,0 +1,89 @@
+{
+"navbarLng": {
+       "txtLocation": "Lokatsiya:",
+       "txtTashkent": "Toshkent",
+       "btnBonus": "Bonus olish"
+    },
+"navbar": {
+    "catalog": "Katalog",
+    "searchPlaceholder": "Katalogdan qidiring",
+    "aboutUs": "Biz haqimizda",
+    "favourites": "Sevimlilar"
+  },
+  "categories": {
+    "heading": "Kategoriyalar",
+    "products": "dona Mahsulotlar"
+  },
+  "bestProducts": {
+    "heading": "Eng yaxshi mahsulotlar"
+  },
+  "choose": {
+    "heading": "Nima uchun bizni tanlashadi?"
+  },
+  "trust": {
+    "heading": "Bizga ishonishadi"
+  },
+  "news": {
+    "heading": "Bizning yangiliklar",
+    "installmentTitle": "Clemar'dan bo'lib-bo'lib to'lash rejasi",
+    "installmentText": "Siz professional uskunalarni sotib olmoqchimisiz, lekin to'liq summani to'lashga tayyor emasmisiz? Siz uchun yechim bor! Bizning qulay bo'lib-bo'lib to'lash tizimimiz bilan tanishing, bu sizga kerakli uskunalarni hozir sotib olish va uni asta-sekin to'lash imkonini beradi. Barcha tafsilotlarni bilib olish va bugungi kunda buyurtma berish uchun «Bo'lib-bo'lib to'lash» bo'limiga tashrif buyuring. Sotib olishingizni Clemar bilan yanada arzon qiling!",
+    "promotionsTitle": "Clemar'da aksiyalar",
+    "promotionsText": "Bizning maxsus takliflar va chegirmalarimiz haqida bilib oling! Clemar'dan barcha foydali imkoniyatlardan xabardor bo'lish uchun «Aksiyalar» bo'limiga tashrif buyuring. Xaridlaringizda tejang va qo'shimcha bonuslar oling. Sizni ijtimoiy tarmoqlarimizda kutib olamiz, katta syurprizlar uchun.",
+    "readMore": "Batafsil"
+  },
+  "contact": {
+    "heading": "Biz bilan bog'laning",
+    "description": "Telefon raqamingizni qoldiring va menejerlarimiz siz bilan tez orada bog'lanishadi",
+    "namePlaceholder": "Ism",
+    "phonePlaceholder": "Telefon raqami",
+    "messagePlaceholder": "Xabaringiz",
+    "sendButton": "Yuborish"
+  },
+  "footer": {
+    "companyDescription": "Clemar - O'zbekistonda 25 dan ortiq dunyo brendlarining distribyutori",
+    "contactTitle": "Bog'lanish uchun",
+    "productsTitle": "Mahsulotlar",
+    "informationTitle": "Ma'lumot",
+    "address": "Bunyodkor ko'chasi, Toshkent",
+    "mapLinkText": "Xaritada ko'rish uchun bu yerga bosing",
+    "copyRight": "Barcha huquqlar himoyalangan.",
+    "contactItems": [
+      { "title": "+998 99 008 14 11", "link": "tel:+998990081411" },
+      { "title": "Bizning manzil", "link": "https://www.google.com/maps/place/Tashkent" },
+      { "title": "info@clemar.uz", "link": "mailto:info@clemar.uz" }
+    ],
+    "socialIcons": [
+      { "link": "https://facebook.com", "icon": "Facebook" },
+      { "link": "https://instagram.com", "icon": "Instagram" },
+      { "link": "https://telegram.org", "icon": "Telegram" },
+      { "link": "https://youtube.com", "icon": "YouTube" }
+    ],
+    "products": [
+      { "title": "Qog'oz mahsulotlari", "link": "/categories/15" },
+      { "title": "Professional changyutgichlar", "link": "/categories/16" },
+      { "title": "Qavatlarni tozalash mashinalari", "link": "/categories/17" },
+      { "title": "Tozalash vositalari", "link": "/categories/18" }
+    ],
+    "info": [
+      { "title": "Aloqa", "link": "contact" },
+      { "title": "Kategoriyalar", "link": "categories" },
+      { "title": "Nega bizni tanlash kerak?", "link": "choose" },
+      { "title": "Yangiliklar", "link": "news" }
+    ]
+  },
+  "newsPage": {
+    "otherNews": "Boshqa yangiliklar",
+    "readMore": "Batafsil"
+  },
+  "aboutPage": {
+    "heading": "Biz haqimizda",
+    "content": "Clemar - professional tozalash sohasida sizning ishonchli hamkoringiz bo'lgan yangi veb-saytimizga xush kelibsiz! Oldingi nomi Clean Market bo'lgan va 10 yillik tajribaga ega bo'lgan biz, sizga yangilangan va qayta tasavvur qilingan identifikatsiyamizni - Clemar'ni taqdim etishdan mamnunmiz. Biz bilan siz faqat mahsulotlar emas, har bir detaldagi kafolatlangan sifat va professionalizmni olasiz. Clemar - O'zbekistondagi 25 dan ortiq global brendlarning yetakchi distribyutori bo'lib, tozalash uskunalari sohasida ixtisoslashgan. Bizning assortimentimiz quruq va nam tozalash uchun professional changyutgichlar, shuningdek, yuqori sifatli qog'oz, servetkalar va qog'oz sochiqlarni o'z ichiga oladi. Ammo, albatta, asosiy e'tiborimiz scrubber dryer'larda. Clemar'da siz butun dunyo bo'ylab mashhur brendlardan simsiz va simli scrubber dryer'larning keng tanlovini topasiz. Bizning tajribamiz va professionalizmimiz sizga har qanday muhitda tozalashni saqlash uchun faqat eng yaxshi echimlarni taklif qilish imkonini beradi. Biz allaqachon mashhur kompaniyalar bilan hamkorlik qilishimizdan faxrlanamiz va O'zbekistondagi obro'imiz bizning eng yaxshilar qatorida ekanligimizni tasdiqlaydi. Clemar - bu faqat yetkazib beruvchi emas, balki tozalash va tartib uchun ishonchli hamkoringiz. Bizga qo'shiling, Clemar'ni tanlang va biznesingizni eng yuqori tozalash va gigiena standartlari bilan ta'minlang."
+  },
+  "productPage": {
+    "featuresHeading": "Mahsulot xususiyatlari",
+    "highQualityProducts": "Bizda eng yuqori sifatli mahsulotlar mavjud!",
+    "buyNow": "Hozir xarid qiling",
+    "moreInfo": "Mahsulot haqida ko'proq",
+    "currency": "Sum"
+  }
+}

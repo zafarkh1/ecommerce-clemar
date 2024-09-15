@@ -2,9 +2,11 @@ import Slider from "react-slick";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
 import SkeletonCard from "../utils/SkeletonCard";
+import { useTranslation } from "react-i18next";
 
 function Trust(props) {
   const { trustData, loading } = useApiData();
+  const { t } = useTranslation(); // Add translation hook
 
   const settings = {
     ...customSliderSettings,
@@ -29,7 +31,8 @@ function Trust(props) {
 
   return (
     <div className="myContainer py-6">
-      <h2 className="heading2 lg:mb-8 mb-4">They trust us</h2>
+      <h2 className="heading2 lg:mb-8 mb-4">{t("trust.heading")}</h2>{" "}
+      {/* Use translation here */}
       <div>
         {loading ? (
           <SkeletonCard height="150px" size={4} gridLg={4} />

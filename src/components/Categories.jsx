@@ -3,10 +3,20 @@ import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
 import { useNavigate } from "react-router-dom";
 import SkeletonCard from "../utils/SkeletonCard";
+import { useLangStore } from "../zustand/useLangStore";
+import { useTranslation } from "react-i18next";
 
 function Categories(props) {
   const navigate = useNavigate();
   const { categoriesData, loading } = useApiData();
+  const { currentLanguage } = useLangStore();
+  const { t } = useTranslation();
+
+  const getItemName = (item) => {
+    if (currentLanguage === "uz") return item.name_uz.split("/").slice(0, -2);
+    if (currentLanguage === "ru") return item.name_ru;
+    return item.name_en;
+  };
 
   const sliderSettings = {
     ...customSliderSettings,
@@ -32,14 +42,14 @@ function Categories(props) {
   return (
     <div id="categories">
       <div className="myContainer">
-        <h2 className="heading2">Categories</h2>
+        <h2 className="heading2">{t("categories.heading")}</h2>
         <div className="lg:mt-8 mt-2">
           {loading ? (
             <SkeletonCard height="300px" size={4} gridLg={4} />
           ) : (
             <Slider {...sliderSettings}>
               {categoriesData.map((item, index) => (
-                <div className="lg:pe-4 pe-2">
+                <div className="lg:pe-4 pe-2" key={index}>
                   <div
                     key={index}
                     className="flex flex-col cursor-pointer "
@@ -48,13 +58,9 @@ function Categories(props) {
                       window.scroll(0, 0);
                     }}
                   >
-                    {" "}
-                    {/* Removed border and added p-4 */}
                     <div className="border rounded-lg lg:p-4 p-2 flex flex-col">
-                      {" "}
-                      {/* Border and padding inside */}
                       <h5 className="heading5 lg:max-h-[20px] max-h-[18px]">
-                        {item.name_en}
+                        {getItemName(item)}
                       </h5>
                       <div className="w-full lg:h-48 h-16 flexCenter lg:my-8 my-4 hover:scale-105 transition-all duration-300">
                         <img
@@ -63,7 +69,9 @@ function Categories(props) {
                           className="max-h-full max-w-full object-contain"
                         />
                       </div>
-                      <p className="mt-auto text">5 PC. Products</p>
+                      <p className="mt-auto text">{`5 ${t(
+                        "categories.products"
+                      )}`}</p>
                     </div>
                   </div>
                 </div>

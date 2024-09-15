@@ -1,0 +1,89 @@
+{
+    "navbarLng": {
+       "txtLocation": "Location:",
+       "txtTashkent": "Tashkent",
+       "btnBonus": "Get a bonus"
+    },
+    "navbar": {
+    "catalog": "Catalog",
+    "searchPlaceholder": "Search in catalog",
+    "aboutUs": "About us",
+    "favourites": "Favourites"
+  },
+  "categories": {
+    "heading": "Categories",
+    "products": "PC. Products"
+  },
+  "bestProducts": {
+    "heading": "Best Products"
+  },
+  "choose": {
+    "heading": "Why choose us?"
+  },
+  "trust": {
+    "heading": "They trust us"
+  },
+  "news": {
+    "heading": "Our news",
+    "installmentTitle": "Installment plan from Clemar",
+    "installmentText": "Do you want to purchase professional equipment, but are not ready to part with the full amount? We have a solution for you! Find out about our convenient installment system, which allows you to purchase the necessary equipment right now and pay it off gradually. Visit the 'Installment' section to find out all the details and place your order today. Make your purchase even more affordable with Clemar!",
+    "promotionsTitle": "Promotions in Clemar",
+    "promotionsText": "Find out about our special offers and discounts! Visit the 'Promotions' section to be aware of all the profitable opportunities from Clemar. Save on purchases and receive additional bonuses. We are waiting for you on our social networks for even bigger surprises.",
+    "readMore": "Read more"
+  },
+  "contact": {
+    "heading": "Contact us",
+    "description": "Leave your phone number and our managers will contact you soon",
+    "namePlaceholder": "Name",
+    "phonePlaceholder": "Phone Number",
+    "messagePlaceholder": "Your message",
+    "sendButton": "Send"
+  },
+  "footer": {
+    "companyDescription": "Clemar - Distributor of more than 25 world brands in Uzbekistan",
+    "contactTitle": "For contact",
+    "productsTitle": "Products",
+    "informationTitle": "Information",
+    "address": "Bunyodkor street, Tashkent",
+    "mapLinkText": "Click here to view on the map",
+    "copyRight": "All rights reserved.",
+    "contactItems": [
+      { "title": "+998 99 008 14 11", "link": "tel:+998990081411" },
+      { "title": "Our address", "link": "https://www.google.com/maps/place/Tashkent" },
+      { "title": "info@clemar.uz", "link": "mailto:info@clemar.uz" }
+    ],
+    "socialIcons": [
+      { "link": "https://facebook.com", "icon": "Facebook" },
+      { "link": "https://instagram.com", "icon": "Instagram" },
+      { "link": "https://telegram.org", "icon": "Telegram" },
+      { "link": "https://youtube.com", "icon": "YouTube" }
+    ],
+    "products": [
+      { "title": "Paper products", "link": "/categories/15" },
+      { "title": "Professional vacuum cleaners", "link": "/categories/16" },
+      { "title": "Floor Cleaning Machines", "link": "/categories/17" },
+      { "title": "Detergents", "link": "/categories/18" }
+    ],
+    "info": [
+      { "title": "Contact", "link": "contact" },
+      { "title": "Categories", "link": "categories" },
+      { "title": "Why choose us?", "link": "choose" },
+      { "title": "News", "link": "news" }
+    ]
+  },
+  "newsPage": {
+    "otherNews": "Other news",
+    "readMore": "Read More"
+  },
+  "aboutPage": {
+    "heading": "About Us",
+    "content": "Welcome to the new website of Clemar - your reliable partner in the field of professional cleaning! Formerly known as Clean Market with over 10 years of experience, we are pleased to introduce you to our updated and reimagined identity - Clemar. With us you get not just products, but guaranteed quality and professionalism in every detail. Clemar is a leading distributor of more than 25 global brands in Uzbekistan, specializing in cleaning equipment. Our range includes professional vacuum cleaners for dry and wet cleaning, as well as high quality paper, napkins and paper towels. But, of course, our main focus is scrubber dryers. At Clemar you will find a wide selection of cordless and corded scrubber dryers from renowned brands from all over the world. Our experience and professionalism allow us to offer you only the best solutions for maintaining cleanliness in any environment. We are proud that we already cooperate with well-known companies, and our reputation in Uzbekistan confirms our place among the best. Clemar is not just a supplier, it is your reliable partner in the fight for cleanliness and order. Join us, choose Clemar, and provide your business with the highest standard of cleaning and hygiene."
+  },
+  "productPage": {
+    "featuresHeading": "Product Features",
+    "highQualityProducts": "Rest assured, we have the highest quality products!",
+    "buyNow": "Buy now",
+    "moreInfo": "More about the product",
+    "currency": "Sum"
+  }
+}

@@ -1,8 +1,10 @@
 import Skeleton from "react-loading-skeleton";
 import { useApiData } from "../api/api";
+import { useTranslation } from "react-i18next";
 
 function Choose(props) {
   const { chooseData, loading } = useApiData();
+  const { t } = useTranslation();
 
   const renderSkeleton = () => (
     <div className="grid lg:grid-cols-4 grid-cols-2 gap-8 mt-10">
@@ -19,7 +21,7 @@ function Choose(props) {
   return (
     <div id="choose">
       <div className="myContainer">
-        <h2 className="heading2">Why choose us?</h2>
+        <h2 className="heading2">{t("choose.heading")}</h2>
         {loading ? (
           renderSkeleton()
         ) : (

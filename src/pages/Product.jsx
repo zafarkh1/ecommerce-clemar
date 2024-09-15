@@ -5,12 +5,28 @@ import BestProducts from "../components/BestProducts";
 import SkeletonCard from "../utils/SkeletonCard";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
+import { useLangStore } from "../zustand/useLangStore";
+import { useTranslation } from "react-i18next"; // Import the useTranslation hook
 
 function Product(props) {
   const { name } = useParams();
   const { allProductsData, loading } = useApiData();
+  const { currentLanguage } = useLangStore();
+  const { t } = useTranslation(); // Initialize the translation hook
 
-  const product = allProductsData.find((item) => item.name_en === name);
+  const getItemName = (item) => {
+    if (currentLanguage === "uz") return item?.name_uz;
+    if (currentLanguage === "ru") return item?.name_ru;
+    return item?.name_en;
+  };
+
+  const getItemDesc = (item) => {
+    if (currentLanguage === "uz") return item?.description_uz;
+    if (currentLanguage === "ru") return item?.description_ru;
+    return item?.description_en;
+  };
+
+  const product = allProductsData.find((item) => item.slug === name);
 
   const images = [
     product?.image1,
@@ -21,7 +37,7 @@ function Product(props) {
     product?.image6,
   ].filter(Boolean);
 
-  const productFeatures = product?.description_en
+  const productFeatures = getItemDesc(product)
     ?.split("\r\n")
     .filter((item) => item !== "");
 
@@ -64,11 +80,11 @@ function Product(props) {
     <>
       <div className="myContainer">
         <h2 className="heading2">
-          {loading ? <Skeleton width="400px" /> : product?.name_en}
+          {loading ? <Skeleton width="400px" /> : getItemName(product)}
         </h2>
 
         <div className="flex lg:flex-row justify-between flex-col lg:gap-10 lg:mt-10 mt-6">
-          {/*             Images           */}
+          {/* Images */}
           <div className="flex flex-col items-center lg:w-1/3 w-full">
             {/* Main Image */}
             <div className="lg:mb-4 mb-2">
@@ -78,7 +94,7 @@ function Product(props) {
                 product && (
                   <img
                     src={product.image1}
-                    alt={product.name_en}
+                    alt={getItemName(product)}
                     className="w-full h-auto object-cover"
                   />
                 )
@@ -95,7 +111,7 @@ function Product(props) {
                     <div key={index} className="lg:px-3 px-2">
                       <img
                         src={image}
-                        alt={index}
+                        alt={`Image ${index + 1}`}
                         className="cursor-pointer border-2 rounded-lg"
                       />
                     </div>
@@ -105,9 +121,11 @@ function Product(props) {
             </div>
           </div>
 
-          {/*              Descriptions       */}
+          {/* Descriptions */}
           <div className="lg:w-1/3 w-full lg:mt-0 mt-4">
-            <h5 className="heading5 mb-6">Product features</h5>
+            <h5 className="heading5 mb-6">
+              {t("productPage.featuresHeading")}
+            </h5>
             {loading ? (
               renderSkeleton()
             ) : (
@@ -117,7 +135,7 @@ function Product(props) {
                     key={index}
                     className={`${
                       index % 2 === 0 ? "bg-gray-300" : "bg-gray-100"
-                    }  p-2 my-2 border-2 text`}
+                    } p-2 my-2 border-2 text`}
                   >
                     {item}
                   </li>
@@ -126,28 +144,30 @@ function Product(props) {
             )}
           </div>
 
-          {/*               Button           */}
+          {/* Button */}
           <div className="lg:w-1/3 w-full lg:mt-0 mt-4">
-            <h5 className="heading5 lg:mb-6 mb-2">0 Sum</h5>
+            <h5 className="heading5 lg:mb-6 mb-2">
+              0 {t("productPage.currency")}
+            </h5>
             <p className="lg:mb-6 mb-3 text-gray-400 lg:text-xl text-base">
-              Rest assured, we have the highest quality products!
+              {t("productPage.highQualityProducts")}
             </p>
             <div>
               <button className="w-full rounded-lg lg:py-3 py-2 bg-primary text-white text">
-                Buy now
+                {t("productPage.buyNow")}
               </button>
             </div>
           </div>
         </div>
 
-        {/*          More info      */}
-        <h5 className="heading5 lg:my-10 my-6">More about the product</h5>
+        {/* More info */}
+        <h5 className="heading5 lg:my-10 my-6">{t("productPage.moreInfo")}</h5>
         <p className="text text-gray-500 border p-2 rounded-lg">
-          {product?.name_en}
+          {getItemName(product)}
         </p>
       </div>
 
-      {/*        Best products           */}
+      {/* Best products */}
       <BestProducts />
     </>
   );

@@ -1,11 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useApiData } from "../api/api";
 import Skeleton from "react-loading-skeleton";
+import { useTranslation } from "react-i18next"; // Import the useTranslation hook
 
 function NewsPage(props) {
   const { id } = useParams();
   const { newsData, loading } = useApiData();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation(); // Initialize the translation hook
 
   const news = newsData.find((item) => item.id === parseInt(id));
   const otherNews = newsData.filter((item) => item.id !== parseInt(id));
@@ -14,7 +16,7 @@ function NewsPage(props) {
     <div className="myContainer">
       <div>
         <h2 className="heading2 text-center px-4">
-          {loading ? <Skeleton width={600} /> : news?.name_en}
+          {loading ? <Skeleton width={600} /> : news?.[`name_${i18n.language}`]}
         </h2>
         <div className="flexCenter">
           {loading ? (
@@ -25,7 +27,7 @@ function NewsPage(props) {
             news?.image1 && (
               <img
                 src={news.image1}
-                alt={news.name_en}
+                alt={news?.[`name_${i18n.language}`]}
                 className="rounded-lg lg:my-6 my-3"
               />
             )
@@ -33,13 +35,17 @@ function NewsPage(props) {
         </div>
 
         <p className="text-gray-500 text">
-          {loading ? <Skeleton height="200px" /> : news?.description_en}
+          {loading ? (
+            <Skeleton height="200px" />
+          ) : (
+            news?.[`description_${i18n.language}`]
+          )}
         </p>
       </div>
 
-      {/*     Other news */}
+      {/* Other news */}
       <div className="lg:mt-10 mt-5">
-        <h5 className="heading5">Other news</h5>
+        <h5 className="heading5">{t("newsPage.otherNews")}</h5>
         <div className="flex lg:gap-8 gap-4 lg:mt-6 mt-4">
           {otherNews.map((item, index) => (
             <div
@@ -48,16 +54,19 @@ function NewsPage(props) {
             >
               <img
                 src={item?.image1}
-                alt={item?.name_en}
+                alt={item?.[`name_${i18n.language}`]}
                 className="object-cover lg:h-36 h-20 w-full lg:mb-6 mb-3"
               />
               <h6 className="lg:text-base text-sm font-semibold">
-                {item?.name_en}
+                {item?.[`name_${i18n.language}`]}
               </h6>
               <p className="text lg:my-6 my-3">
-                {item?.description_en.length > 100
-                  ? `${item?.description_en.substring(0, 100)} ...`
-                  : item?.description_en}
+                {item?.[`description_${i18n.language}`].length > 100
+                  ? `${item?.[`description_${i18n.language}`].substring(
+                      0,
+                      100
+                    )} ...`
+                  : item?.[`description_${i18n.language}`]}
               </p>
               <p
                 className="underline text-primary text"
@@ -66,7 +75,7 @@ function NewsPage(props) {
                   window.scroll(0, 0);
                 }}
               >
-                Read More
+                {t("newsPage.readMore")}
               </p>
             </div>
           ))}

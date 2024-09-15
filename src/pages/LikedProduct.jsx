@@ -1,5 +1,5 @@
 import ProductCard from "../utils/ProductCard";
-import { useStore } from "../utils/useStore";
+import { useStore } from "../zustand/useStore";
 
 function LikedProduct(props) {
   const { favorites } = useStore();
