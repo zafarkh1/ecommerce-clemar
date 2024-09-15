@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useApiData } from "../api/api";
 import ProductCard from "../utils/ProductCard";
 import Skeleton from "react-loading-skeleton";
-import SkeletonCard from "../utils/SkeletonCard";
 import { useLangStore } from "../zustand/useLangStore";
 
 function CategoryProducts(props) {
@@ -30,11 +29,19 @@ function CategoryProducts(props) {
       <h2 className="heading2">
         {getItemData(category) || <Skeleton width="50%" />}
       </h2>
-      <div className="lg:mt-10 mt-4">
+      <div className="lg:my-10 my-4">
         {loading ? (
-          <SkeletonCard height="300px" size={9} gridLg={3} />
+          <div className={`grid lg:grid-cols-3 grid-cols-2 lg:gap-6 gap-2`}>
+            {Array(9)
+              .fill()
+              .map((_, index) => (
+                <div key={index}>
+                  <Skeleton className="categoryProductsSkeleton" />
+                </div>
+              ))}
+          </div>
         ) : (
-          <div className="grid lg:grid-cols-3 lg:gap-8 gap-4">
+          <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-8 gap-3">
             {data.map((item, index) => (
               <div
                 key={index}

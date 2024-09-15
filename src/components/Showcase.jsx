@@ -13,7 +13,7 @@ function Showcase() {
 
   const renderSkeletons = () => (
     <div>
-      <Skeleton height={400} style={{ borderRadius: "0.5rem" }} />
+      <Skeleton className="showcaseSkeleton" />
     </div>
   );
 
@@ -28,7 +28,7 @@ function Showcase() {
               key={index}
               src={data.image}
               alt={`Slide ${index}`}
-              className="rounded-lg"
+              className="rounded-lg h-32 md:h-auto"
             />
           ))}
         </Slider>

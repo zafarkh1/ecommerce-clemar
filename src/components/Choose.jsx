@@ -2,12 +2,12 @@ import Skeleton from "react-loading-skeleton";
 import { useApiData } from "../api/api";
 import { useTranslation } from "react-i18next";
 
-function Choose(props) {
+function Choose() {
   const { chooseData, loading } = useApiData();
   const { t } = useTranslation();
 
   const renderSkeleton = () => (
-    <div className="grid lg:grid-cols-4 grid-cols-2 gap-8 mt-10">
+    <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-4 lg:mt-10 mt-4">
       {Array(4)
         .fill()
         .map((_, index) => (

@@ -1,12 +1,12 @@
 {
-    "navbarLng": {
-       "txtLocation": "Location:",
-       "txtTashkent": "Tashkent",
-       "btnBonus": "Get a bonus"
+  "navbarLng": {
+     "txtLocation": "Location:",
+     "txtTashkent": "Tashkent",
+     "btnBonus": "Get a bonus"
     },
-    "navbar": {
+  "navbar": {
     "catalog": "Catalog",
-    "searchPlaceholder": "Search in catalog",
+    "searchPlaceholder": "Search for a product",
     "aboutUs": "About us",
     "favourites": "Favourites"
   },
@@ -85,5 +85,20 @@
     "buyNow": "Buy now",
     "moreInfo": "More about the product",
     "currency": "Sum"
+  },
+  "MsgModal": {
+    "heading": "Complete Your Information",
+    "text": "Please provide your details to complete the purchase. We will process your order and deliver it as soon as possible.",
+    "btn": "Buy Now",
+    "loadingBtn": "Submitting...",
+    "successMessage": "Product purchased successfully!",
+    "errorMessage": "An error occurred during the purchase. Please try again!",
+    "inputName": "Name",
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMinLength": "Name must be at least 3 characters long",
+      "nameNotNumber": "Name cannot be a number",
+      "telRequired": "Telephone number is required"
+    }
   }
 }

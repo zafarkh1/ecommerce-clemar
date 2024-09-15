@@ -2,10 +2,12 @@ import Slider from "react-slick";
 import ProductCard from "../utils/ProductCard";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
-import SkeletonCard from "../utils/SkeletonCard";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 
 function BestProducts(props) {
+  const [skeletonCount, setSkeletonCount] = useState(4);
   const { bestProductsData, loading } = useApiData();
   const { t } = useTranslation();
 
@@ -29,12 +31,38 @@ function BestProducts(props) {
     ],
   };
 
+  useEffect(() => {
+    const updateSkeletonCount = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setSkeletonCount(2); // 2 skeletons on small screens
+      } else {
+        setSkeletonCount(4); // 4 skeletons on large screens
+      }
+    };
+
+    updateSkeletonCount(); // Initial check
+    window.addEventListener("resize", updateSkeletonCount);
+
+    return () => {
+      window.removeEventListener("resize", updateSkeletonCount);
+    };
+  }, []);
+
   return (
     <div className="myContainer">
       <h2 className="heading2">{t("bestProducts.heading")}</h2>
       <div className="lg:mt-10 mt-4">
         {loading ? (
-          <SkeletonCard height="300px" size={4} gridLg={4} />
+          <div className={`grid lg:grid-cols-4 grid-cols-2 lg:gap-6 gap-2`}>
+            {Array(skeletonCount)
+              .fill()
+              .map((_, index) => (
+                <div key={index}>
+                  <Skeleton className="categoriesSkeleton" />
+                </div>
+              ))}
+          </div>
         ) : (
           <Slider {...sliderSettings}>
             {bestProductsData.map((item, index) => (
@@ -45,9 +73,17 @@ function BestProducts(props) {
           </Slider>
         )}
       </div>
-      <div className="lg:mt-10 mt-4">
+      <div className="lg:mt-10 mt-2">
         {loading ? (
-          <SkeletonCard height="300px" size={4} gridLg={4} />
+          <div className={`grid lg:grid-cols-4 grid-cols-2 lg:gap-6 gap-2`}>
+            {Array(4)
+              .fill()
+              .map((_, index) => (
+                <div key={index}>
+                  <Skeleton className="categoriesSkeleton" />
+                </div>
+              ))}
+          </div>
         ) : (
           <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-0 gap-y-4">
             {bestProductsData.slice(0, 4).map((item, index) => (

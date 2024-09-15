@@ -1,10 +1,12 @@
 import Slider from "react-slick";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
-import SkeletonCard from "../utils/SkeletonCard";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 
 function Trust(props) {
+  const [skeletonCount, setSkeletonCount] = useState(4);
   const { trustData, loading } = useApiData();
   const { t } = useTranslation(); // Add translation hook
 
@@ -29,13 +31,38 @@ function Trust(props) {
     ],
   };
 
+  useEffect(() => {
+    const updateSkeletonCount = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setSkeletonCount(2); // 2 skeletons on small screens
+      } else {
+        setSkeletonCount(4); // 4 skeletons on large screens
+      }
+    };
+
+    updateSkeletonCount(); // Initial check
+    window.addEventListener("resize", updateSkeletonCount);
+
+    return () => {
+      window.removeEventListener("resize", updateSkeletonCount);
+    };
+  }, []);
+
   return (
     <div className="myContainer py-6">
       <h2 className="heading2 lg:mb-8 mb-4">{t("trust.heading")}</h2>{" "}
-      {/* Use translation here */}
       <div>
         {loading ? (
-          <SkeletonCard height="150px" size={4} gridLg={4} />
+          <div className={`grid lg:grid-cols-4 grid-cols-2 lg:gap-6 gap-2`}>
+            {Array(skeletonCount)
+              .fill()
+              .map((_, index) => (
+                <div key={index}>
+                  <Skeleton className="trustSkeleton" />
+                </div>
+              ))}
+          </div>
         ) : (
           <Slider {...settings}>
             {trustData.map((item, index) => (

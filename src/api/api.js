@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export const useApiData = () => {
   const [slideData, setSlideData] = useState([]);
   const [categoriesData, setCategoriesData] = useState([]);
+  const [subCategoriesData, setSubCategoriesData] = useState([]);
   const [bestProductsData, setBestProductsData] = useState([]);
   const [chooseData, setChooseData] = useState([]);
   const [trustData, setTrustData] = useState([]);
@@ -29,6 +30,7 @@ export const useApiData = () => {
   useEffect(() => {
     const sliderUrl = "https://clean.maxone.uz/api/sliders/";
     const categoriesUrl = "https://clean.maxone.uz/api/categories/";
+    const subCategoryUrl = "https://clean.maxone.uz/api/sub_categories/";
     const bestProductsUrl = "https://clean.maxone.uz/api/top_products/";
     const chooseUrl = "https://clean.maxone.uz/api/why_us/";
     const trustUrl = "https://clean.maxone.uz/api/partner/";
@@ -38,6 +40,7 @@ export const useApiData = () => {
     Promise.all([
       fetchData(sliderUrl),
       fetchData(categoriesUrl),
+      fetchData(subCategoryUrl),
       fetchData(bestProductsUrl),
       fetchData(chooseUrl),
       fetchData(trustUrl),
@@ -48,6 +51,7 @@ export const useApiData = () => {
         ([
           slideItem,
           categoriesItem,
+          subCategoryItem,
           bestProductsItem,
           chooseItem,
           trustItem,
@@ -56,6 +60,7 @@ export const useApiData = () => {
         ]) => {
           setSlideData(slideItem);
           setCategoriesData(categoriesItem);
+          setSubCategoriesData(subCategoryItem);
           setBestProductsData(bestProductsItem);
           setChooseData(chooseItem);
           setTrustData(trustItem);
@@ -73,6 +78,7 @@ export const useApiData = () => {
   return {
     slideData,
     categoriesData,
+    subCategoriesData,
     bestProductsData,
     chooseData,
     trustData,

@@ -1,6 +1,6 @@
 import { MdOutlineLocationOn, MdKeyboardArrowDown } from "react-icons/md";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLangStore } from "../zustand/useLangStore";
 
@@ -8,6 +8,7 @@ function NavbarLng() {
   const [showDropdown, setShowDropdown] = useState(false);
   const { t, i18n } = useTranslation();
   const { currentLanguage, setCurrentLanguage } = useLangStore();
+  const dropdownRef = useRef(null); // Ref for dropdown
 
   const languages = ["uz", "en", "ru"];
 
@@ -16,6 +17,20 @@ function NavbarLng() {
     setCurrentLanguage(lang);
     setShowDropdown(false);
   };
+
+  useEffect(() => {
+    // Close the dropdown if clicking outside of it
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const items = [
     {
@@ -63,7 +78,7 @@ function NavbarLng() {
                 rel="noopener noreferrer"
               >
                 <span className="text-2xl">{item.icon}</span>{" "}
-                <span className="text lg:text-base">{t(item.title)}</span>{" "}
+                <span className="text lg:text-base">{item.title}</span>{" "}
                 {/* Translated titles */}
               </a>
             </li>
@@ -79,6 +94,7 @@ function NavbarLng() {
           <li
             className="relative flexBetween text lg:text-base cursor-pointer"
             onClick={() => setShowDropdown(!showDropdown)}
+            ref={dropdownRef} // Attach the ref to the dropdown container
           >
             <span>{currentLanguage.toUpperCase()}</span>
             <span className="text-2xl">

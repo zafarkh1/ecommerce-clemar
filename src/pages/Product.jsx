@@ -6,13 +6,16 @@ import SkeletonCard from "../utils/SkeletonCard";
 import { useApiData } from "../api/api";
 import { customSliderSettings } from "../utils/sliderSettings";
 import { useLangStore } from "../zustand/useLangStore";
-import { useTranslation } from "react-i18next"; // Import the useTranslation hook
+import { useTranslation } from "react-i18next";
+import { useModalStore } from "../zustand/useModalStore";
+import MessageModal from "../utils/Modal";
 
 function Product(props) {
   const { name } = useParams();
   const { allProductsData, loading } = useApiData();
   const { currentLanguage } = useLangStore();
-  const { t } = useTranslation(); // Initialize the translation hook
+  const { t } = useTranslation();
+  const { openModal } = useModalStore();
 
   const getItemName = (item) => {
     if (currentLanguage === "uz") return item?.name_uz;
@@ -153,7 +156,10 @@ function Product(props) {
               {t("productPage.highQualityProducts")}
             </p>
             <div>
-              <button className="w-full rounded-lg lg:py-3 py-2 bg-primary text-white text">
+              <button
+                className="w-full rounded-lg lg:py-3 py-2 bg-primary text-white text"
+                onClick={openModal}
+              >
                 {t("productPage.buyNow")}
               </button>
             </div>
@@ -169,6 +175,7 @@ function Product(props) {
 
       {/* Best products */}
       <BestProducts />
+      <MessageModal />
     </>
   );
 }

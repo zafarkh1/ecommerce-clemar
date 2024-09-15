@@ -19,7 +19,7 @@
 }
 
 .icon {
-  @apply lg:text-2xl text-xl;
+  @apply text-2xl;
 }
 
 .text {
@@ -32,4 +32,42 @@
 
 .flexCenter {
   @apply flex items-center justify-center;
+}
+
+.skeletonBorder {
+  border-radius: 0.5rem;
+}
+
+.showcaseSkeleton {
+  height: 400px;
+}
+
+.categoriesSkeleton {
+  height: 300px;
+}
+
+.trustSkeleton {
+  height: 150px;
+}
+
+.categoryProductsSkeleton {
+  height: 350px;
+}
+
+@media (max-width: 512px) {
+  .showcaseSkeleton {
+    height: 150px;
+  }
+
+  .categoriesSkeleton {
+    height: 150px;
+  }
+
+  .trustSkeleton {
+    height: 100px;
+  }
+
+  .categoryProductsSkeleton {
+    height: 220px;
+  }
 }

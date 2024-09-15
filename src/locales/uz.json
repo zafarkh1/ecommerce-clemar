@@ -1,12 +1,12 @@
 {
-"navbarLng": {
+  "navbarLng": {
        "txtLocation": "Lokatsiya:",
        "txtTashkent": "Toshkent",
        "btnBonus": "Bonus olish"
     },
-"navbar": {
+  "navbar": {
     "catalog": "Katalog",
-    "searchPlaceholder": "Katalogdan qidiring",
+    "searchPlaceholder": "Mahsulotni qidirish",
     "aboutUs": "Biz haqimizda",
     "favourites": "Sevimlilar"
   },
@@ -85,5 +85,20 @@
     "buyNow": "Hozir xarid qiling",
     "moreInfo": "Mahsulot haqida ko'proq",
     "currency": "Sum"
+  },
+  "MsgModal": {
+    "heading": "Ma'lumotlaringizni to'ldiring",
+    "text": "Xaridni yakunlash uchun ma'lumotlaringizni kiriting. Buyurtmangizni qayta ishlaymiz va imkon qadar tezroq yetkazib beramiz.",
+    "btn": "Hoziroq xarid qiling",
+    "loadingBtn": "Buyurtma rasmiylashtirilmoqda...",
+    "successMessage": "Mahsulot muvaffaqiyatli xarid qilindi!",
+    "errorMessage": "Xarid qilishda xatolik yuz berdi. Iltimos, qayta urinib ko‘ring!",
+    "inputName": "Ism",
+    "validation": {
+      "nameRequired": "Ism majburiy",
+      "nameMinLength": "Ism kamida 3 ta belgidan iborat bo'lishi kerak",
+      "nameNotNumber": "Ism raqam bo'lishi mumkin emas",
+      "telRequired": "Telefon raqami talab qilinadi"
+    }
   }
 }
