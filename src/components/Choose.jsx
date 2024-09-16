@@ -6,13 +6,21 @@ function Choose() {
   const { chooseData, loading } = useApiData();
   const { t } = useTranslation();
 
+  const skeletonBaseColor = "#e0e0e0"; // Custom base color
+  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
+
   const renderSkeleton = () => (
     <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-4 lg:mt-10 mt-4">
       {Array(4)
         .fill()
         .map((_, index) => (
           <div key={index}>
-            <Skeleton height="80px" borderRadius="0.5rem" />
+            <Skeleton
+              height="80px"
+              borderRadius="0.5rem"
+              baseColor={skeletonBaseColor} // Set base color
+              highlightColor={skeletonHighlightColor} // Set highlight color
+            />
           </div>
         ))}
     </div>

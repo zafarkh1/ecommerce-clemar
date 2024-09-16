@@ -91,18 +91,34 @@ function Product(props) {
         .map((_, index) => (
           <div key={index}>
             <li>
-              <Skeleton height="40px" style={{ marginBottom: "8px" }} />
+              <Skeleton
+                height="40px"
+                style={{ marginBottom: "8px" }}
+                baseColor={skeletonBaseColor} // Set base color
+                highlightColor={skeletonHighlightColor} // Set highlight color
+              />
             </li>
           </div>
         ))}
     </ul>
   );
 
+  const skeletonBaseColor = "#e0e0e0"; // Custom base color
+  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
+
   return (
     <>
       <div className="myContainer lg:mt-0 mt-28">
         <h2 className="heading2">
-          {loading ? <Skeleton width="60%" /> : getItemName(product)}
+          {loading ? (
+            <Skeleton
+              width="60%"
+              baseColor={skeletonBaseColor} // Set base color
+              highlightColor={skeletonHighlightColor} // Set highlight color
+            />
+          ) : (
+            getItemName(product)
+          )}
         </h2>
 
         <div className="flex lg:flex-row justify-between flex-col lg:gap-10 lg:mt-10 mt-6">
@@ -111,8 +127,12 @@ function Product(props) {
             {/* Main Image */}
             <div className="lg:mb-4 mb-2 w-full">
               {loading ? (
-                // Render Skeleton with fixed height and width
-                <Skeleton className="mainImgSkeleton" borderRadius="0.5rem" />
+                <Skeleton
+                  className="mainImgSkeleton"
+                  borderRadius="0.5rem"
+                  baseColor={skeletonBaseColor} // Set base color
+                  highlightColor={skeletonHighlightColor} // Set highlight color
+                />
               ) : (
                 // Render Image only if not loading
                 product && (
@@ -139,6 +159,8 @@ function Product(props) {
                         <Skeleton
                           className="trustSkeleton"
                           borderRadius="0.5rem"
+                          baseColor={skeletonBaseColor} // Set base color
+                          highlightColor={skeletonHighlightColor} // Set highlight color
                         />
                       </div>
                     ))}

@@ -11,9 +11,17 @@ function Showcase() {
     ...customSliderSettings,
   };
 
+  const skeletonBaseColor = "#e0e0e0"; // Custom base color
+  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
+
   const renderSkeletons = () => (
     <div>
-      <Skeleton className="showcaseSkeleton" borderRadius="0.5rem" />
+      <Skeleton
+        className="showcaseSkeleton"
+        borderRadius="0.5rem"
+        baseColor={skeletonBaseColor} // Set base color
+        highlightColor={skeletonHighlightColor}
+      />
     </div>
   );
 

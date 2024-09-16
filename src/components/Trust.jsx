@@ -49,6 +49,9 @@ function Trust(props) {
     };
   }, []);
 
+  const skeletonBaseColor = "#e0e0e0"; // Custom base color
+  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
+
   return (
     <div className="myContainer py-6">
       <h2 className="heading2 lg:mb-8 mb-4">{t("trust.heading")}</h2>{" "}
@@ -59,7 +62,11 @@ function Trust(props) {
               .fill()
               .map((_, index) => (
                 <div key={index}>
-                  <Skeleton className="trustSkeleton" />
+                  <Skeleton
+                    className="trustSkeleton"
+                    baseColor={skeletonBaseColor} // Set base color
+                    highlightColor={skeletonHighlightColor} // Set highlight color
+                  />
                 </div>
               ))}
           </div>

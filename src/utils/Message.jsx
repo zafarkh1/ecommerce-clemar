@@ -14,7 +14,7 @@ function Message() {
     try {
       await axios.post(url, {
         chat_id: chatId,
-        text: `Name: ${name}\nTelephone: ${tel}\nProject: Ecommerce`,
+        text: `Name: ${name}\nTelephone: ${tel}\nProject: Clemar`,
       });
       setLoading(false);
     } catch (err) {

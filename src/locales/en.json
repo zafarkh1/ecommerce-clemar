@@ -37,7 +37,8 @@
     "namePlaceholder": "Name",
     "phonePlaceholder": "Phone Number",
     "messagePlaceholder": "Your message",
-    "sendButton": "Send"
+    "sendButton": "Send",
+    "loadingSendButton": "Sending ..."
   },
   "footer": {
     "companyDescription": "Clemar - Distributor of more than 25 world brands in Uzbekistan",

@@ -5,8 +5,10 @@ import { customSliderSettings } from "../utils/sliderSettings";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
+import MessageModal from "../utils/Modal";
+import "react-loading-skeleton/dist/skeleton.css";
 
-function BestProducts(props) {
+function BestProducts() {
   const [skeletonCount, setSkeletonCount] = useState(4);
   const { bestProductsData, loading } = useApiData();
   const { t } = useTranslation();
@@ -49,6 +51,9 @@ function BestProducts(props) {
     };
   }, []);
 
+  const skeletonBaseColor = "#e0e0e0"; // Custom base color
+  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
+
   return (
     <div className="myContainer">
       <h2 className="heading2">{t("bestProducts.heading")}</h2>
@@ -62,6 +67,8 @@ function BestProducts(props) {
                   <Skeleton
                     className="categoriesSkeleton"
                     borderRadius="0.5rem"
+                    baseColor={skeletonBaseColor} // Set base color
+                    highlightColor={skeletonHighlightColor} // Set highlight color
                   />
                 </div>
               ))}
@@ -86,6 +93,8 @@ function BestProducts(props) {
                   <Skeleton
                     className="categoriesSkeleton"
                     borderRadius="0.5rem"
+                    baseColor={skeletonBaseColor} // Set base color
+                    highlightColor={skeletonHighlightColor} // Set highlight color
                   />
                 </div>
               ))}
@@ -100,6 +109,7 @@ function BestProducts(props) {
           </div>
         )}
       </div>
+      <MessageModal />
     </div>
   );
 }

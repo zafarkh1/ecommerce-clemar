@@ -37,7 +37,8 @@
     "namePlaceholder": "Имя",
     "phonePlaceholder": "Номер телефона",
     "messagePlaceholder": "Ваше сообщение",
-    "sendButton": "Отправить"
+    "sendButton": "Отправить",
+    "loadingSendButton": "Отправляется ..."
   },
   "footer": {
     "companyDescription": "Clemar - Дистрибьютор более 25 мировых брендов в Узбекистане",

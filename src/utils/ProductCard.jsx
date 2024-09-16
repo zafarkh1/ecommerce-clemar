@@ -2,11 +2,13 @@ import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../zustand/useStore";
 import { useLangStore } from "../zustand/useLangStore";
+import { useModalStore } from "../zustand/useModalStore";
 
 function ProductCard({ item }) {
   const navigate = useNavigate();
   const { toggleFavorite, favorites } = useStore();
   const { currentLanguage } = useLangStore();
+  const { openModal } = useModalStore();
 
   const isFavorited = (id) => favorites.some((item) => item.id === id);
 
@@ -60,6 +62,7 @@ function ProductCard({ item }) {
           <button
             className="bg-gray-200 hover:bg-primary hover:text-white w-full rounded-lg py-1 
             textfont-medium transition-all duration-500"
+            onClick={openModal}
           >
             Buy
           </button>

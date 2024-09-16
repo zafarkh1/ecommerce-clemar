@@ -37,7 +37,8 @@
     "namePlaceholder": "Ism",
     "phonePlaceholder": "Telefon raqami",
     "messagePlaceholder": "Xabaringiz",
-    "sendButton": "Yuborish"
+    "sendButton": "Yuborish",
+    "loadingSendButton": "Yuborilmoqda ..."
   },
   "footer": {
     "companyDescription": "Clemar - O'zbekistonda 25 dan ortiq dunyo brendlarining distribyutori",

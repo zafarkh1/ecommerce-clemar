@@ -24,6 +24,9 @@ function CategoryProducts(props) {
     (product) => product.id === parseInt(id)
   );
 
+  const skeletonBaseColor = "#e0e0e0"; // Custom base color
+  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
+
   return (
     <div className="myContainer">
       <h2 className="heading2">
@@ -39,6 +42,8 @@ function CategoryProducts(props) {
                   <Skeleton
                     className="categoryProductsSkeleton"
                     borderRadius="0.5rem"
+                    baseColor={skeletonBaseColor} // Set base color
+                    highlightColor={skeletonHighlightColor} // Set highlight color
                   />
                 </div>
               ))}
