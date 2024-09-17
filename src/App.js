@@ -8,6 +8,8 @@ import Product from "./pages/Product";
 import NewsPage from "./pages/NewsPage";
 import LikedProduct from "./pages/LikedProduct";
 import About from "./pages/About";
+import SearchedProducts from "./pages/SearchedProducts";
+import SubCategoriesProducts from "./pages/SubCategoriesProducts";
 
 function App(props) {
   return (
@@ -19,6 +21,8 @@ function App(props) {
           <Route path="/" element={<Home />} />
           <Route path="/categories/:id" element={<CategoryProducts />} />
           <Route path="/products/:name" element={<Product />} />
+          <Route path="/subCategory/:id" element={<SubCategoriesProducts />} />
+          <Route path="/search" element={<SearchedProducts />} />
           <Route path="/news/:id" element={<NewsPage />} />
           <Route path="/likes" element={<LikedProduct />} />
           <Route path="/about" element={<About />} />

@@ -7,6 +7,7 @@
   "navbar": {
     "catalog": "Catalog",
     "searchPlaceholder": "Search for a product",
+    "emptySearchPl": "Please enter a search query.",
     "aboutUs": "About us",
     "favourites": "Favourites"
   },
@@ -86,6 +87,22 @@
     "buyNow": "Buy now",
     "moreInfo": "More about the product",
     "currency": "Sum"
+  },
+  "productCard": {
+    "currency": " Sum",
+    "buy": "Buy"
+  },
+  "likedProducts": {
+    "favorites": "Favorites",
+    "noProducts": "No liked porducts :("
+  },
+  "searchedProducts": {
+    "searchResults": "Search Results for",
+    "loading": "Loading ...",
+    "noProductsFound": "No products found for"
+  },
+  "subCategoryProducts": {
+
   },
   "MsgModal": {
     "heading": "Complete Your Information",

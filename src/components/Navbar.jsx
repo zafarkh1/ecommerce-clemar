@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { MdMenu, MdOutlineSearch } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
@@ -13,15 +13,32 @@ import debounce from "lodash.debounce"; // Import debounce function from lodash
 function Navbar(props) {
   const [searchedData, setSearchedData] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showError, setShowError] = useState(false); // State to manage error display
   const searchRef = useRef(null);
+  const catalogRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const { favorites } = useStore();
   const { allProductsData } = useApiData();
 
   const navbarHeight = 300;
+
+  useEffect(() => {
+    // Close the dropdown if clicking outside of it
+    const handleClickOutside = (event) => {
+      if (catalogRef.current && !catalogRef.current.contains(event.target)) {
+        setIsCatalogOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [catalogRef]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +80,37 @@ function Navbar(props) {
     } else {
       setSearchedData([]);
     }
-  }, 300); // Adjust the debounce delay as needed (300ms in this case)
+  }, 300);
 
   // Handle input change and pass it to debounced search function
   const handleSearchInput = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
     debouncedSearch(query); // Call debounced search function
+    setShowError(false); // Hide error when user types
   };
+
+  // Handle button click to navigate to search page with query
+  const handleSearchSubmit = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${searchQuery.trim()}`);
+    } else {
+      setShowError(true); // Show inline error message if query is empty
+    }
+  };
+
+  // Trigger search when "Enter" is pressed
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearchSubmit(); // Call the same submit function
+    }
+  };
+
+  // Clear the search query when navigating to any page
+  useEffect(() => {
+    setSearchQuery(""); // Clear the search input whenever the route changes
+    setSearchedData([]); // Optionally clear search results
+  }, [location.pathname]); // Trigger when the path changes
 
   return (
     <div
@@ -80,9 +120,10 @@ function Navbar(props) {
     >
       <div
         className={`myContainer grid lg:grid-cols-12 grid-cols-5 items-center relative`}
+        ref={catalogRef}
       >
         <div className="absolute top-full left-0 right-0">
-          {isCatalogOpen && <Catalog />}
+          {isCatalogOpen && <Catalog close={setIsCatalogOpen} />}
         </div>
 
         {/* Logo & Catalog */}
@@ -131,12 +172,22 @@ function Navbar(props) {
             <div className="flexBetween border border-gray-300 rounded-md overflow-hidden w-full shadow-sm">
               <input
                 type="text"
-                className="outline-none lg:px-4 px-2 lg:py-2 py-1 w-full text"
-                placeholder={t("navbar.searchPlaceholder")}
+                className={`outline-none lg:px-4 px-2 lg:py-2 py-1 w-full text search-input ${
+                  showError ? "border-red-500" : ""
+                }`}
+                placeholder={
+                  showError
+                    ? t("navbar.emptySearchPl")
+                    : t("navbar.searchPlaceholder")
+                }
+                onKeyDown={handleKeyDown} // Detect Enter key press
                 value={searchQuery}
-                onChange={handleSearchInput} // Debounced input handling
+                onChange={handleSearchInput}
               />
-              <button className="bg-primary text-white hover:bg-primary-dark lg:w-16 w-8 lg:h-10 h-8 flexCenter justify-center">
+              <button
+                onClick={handleSearchSubmit}
+                className={`search-button bg-primary text-white hover:bg-primary-dark lg:w-16 w-8 lg:h-10 h-8 flexCenter justify-center`}
+              >
                 <MdOutlineSearch className="icon" />
               </button>
             </div>

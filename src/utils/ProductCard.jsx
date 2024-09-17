@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useStore } from "../zustand/useStore";
 import { useLangStore } from "../zustand/useLangStore";
 import { useModalStore } from "../zustand/useModalStore";
+import { useTranslation } from "react-i18next";
 
 function ProductCard({ item }) {
   const navigate = useNavigate();
   const { toggleFavorite, favorites } = useStore();
   const { currentLanguage } = useLangStore();
   const { openModal } = useModalStore();
+  const { t } = useTranslation();
 
   const isFavorited = (id) => favorites.some((item) => item.id === id);
 
@@ -57,14 +59,16 @@ function ProductCard({ item }) {
             ? `${getItemName(item).substring(0, 15)}...`
             : getItemName(item)}
         </p>
-        <p className="lg:my-3 my-1 font-medium text">0 Sum</p>
+        <p className="lg:my-3 my-1 font-medium text">
+          0 {t("productCard.currency")}
+        </p>
         <div className="">
           <button
             className="bg-gray-200 hover:bg-primary hover:text-white w-full rounded-lg py-1 
             textfont-medium transition-all duration-500"
             onClick={openModal}
           >
-            Buy
+            {t("productCard.buy")}
           </button>
         </div>
       </div>

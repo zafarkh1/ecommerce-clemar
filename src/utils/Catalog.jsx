@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useApiData } from "../api/api";
 import { useLangStore } from "../zustand/useLangStore";
+import { useNavigate } from "react-router-dom";
 
-function Catalog(props) {
+function Catalog({ close }) {
   const [activeCategory, setActiveCategory] = useState(null);
   const { categoriesData, subCategoriesData } = useApiData();
+  const navigate = useNavigate();
   const { currentLanguage } = useLangStore();
 
   // Filter subCategoriesData based on activeCategory
@@ -28,7 +30,7 @@ function Catalog(props) {
     <div className="bg-white">
       <div className="myContainer flex">
         {/* Categories List */}
-        <div className="w-1/4 border-r-2 pr-4">
+        <div className="lg:w-1/4 border-r-2">
           {categoriesData.map((item, index) => (
             <div
               key={index}
@@ -37,7 +39,7 @@ function Catalog(props) {
               }`}
               onMouseEnter={() => setActiveCategory(item.id)}
             >
-              <p className="text-lg font-medium">{getItemName(item)}</p>
+              <p className="text font-medium">{getItemName(item)}</p>
             </div>
           ))}
         </div>
@@ -45,10 +47,18 @@ function Catalog(props) {
         {/* Subcategories List */}
         <div className="w-3/4 pl-4">
           {activeCategory && (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid lg:grid-cols-2 gap-4">
               {filteredSubCategories.map((subCategory) => (
                 <div key={subCategory.id} className="subcategory-item">
-                  <p className="text font-medium">{getItemName(subCategory)}</p>
+                  <p
+                    className="text font-medium cursor-pointer"
+                    onClick={() => {
+                      navigate(`/subCategory/${subCategory.id}`);
+                      close(false);
+                    }}
+                  >
+                    {getItemName(subCategory)}
+                  </p>
                 </div>
               ))}
             </div>

@@ -7,6 +7,7 @@
   "navbar": {
     "catalog": "Katalog",
     "searchPlaceholder": "Mahsulotni qidirish",
+    "emptySearchPl": "Iltimos, qidiruv so'zini kiriting.",
     "aboutUs": "Biz haqimizda",
     "favourites": "Sevimlilar"
   },
@@ -86,6 +87,19 @@
     "buyNow": "Hozir xarid qiling",
     "moreInfo": "Mahsulot haqida ko'proq",
     "currency": "Sum"
+  },
+  "productCard": {
+    "currency": " So'm",
+    "buy": "Xarid qilish"
+  },
+  "likedProducts": {
+    "favorites": "Sevimlilar",
+    "noProducts": "Yoqqan mahsulotlar yo'q :("
+  },
+  "searchedProducts": {
+  "searchResults": "Qidiruv natijalari",
+  "loading": "Yuklanmoqda ...",
+  "noProductsFound": "Hech qanday mahsulot topilmadi"
   },
   "MsgModal": {
     "heading": "Ma'lumotlaringizni to'ldiring",

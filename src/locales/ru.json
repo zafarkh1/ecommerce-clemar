@@ -7,6 +7,7 @@
     "navbar": {
     "catalog": "Каталог",
     "searchPlaceholder": "Поиск товара",
+    "emptySearchPl": "Пожалуйста, введите поисковый запрос.",
     "aboutUs": "О нас",
     "favourites": "Избранное"
   },
@@ -86,6 +87,19 @@
     "buyNow": "Купить сейчас",
     "moreInfo": "Подробнее о продукте",
     "currency": "Сум"
+  },
+  "productCard": {
+    "currency": " Сум",
+    "buy": "Купить"
+  },
+  "likedProducts": {
+    "favorites": "Избранные",
+    "noProducts": "Нет избранных товаров :("
+  },
+  "searchedProducts": {
+   "searchResults": "Результаты поиска по запросу",
+   "loading": "Загрузка ...",
+   "noProductsFound": "Не найдено товаров по запросу"
   },
   "MsgModal": {
     "heading": "Заполните свою информацию",
