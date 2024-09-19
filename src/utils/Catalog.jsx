@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useApiData } from "../api/api";
 import { useLangStore } from "../zustand/useLangStore";
-import { useNavigate } from "react-router-dom";
 
 function Catalog({ close }) {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -34,7 +34,7 @@ function Catalog({ close }) {
           {categoriesData.map((item, index) => (
             <div
               key={index}
-              className={`py-4 hover:bg-gray-100 cursor-pointer ${
+              className={`py-4 lg:hover:bg-gray-100 cursor-pointer ${
                 activeCategory === item.id ? "bg-gray-200" : ""
               }`}
               onMouseEnter={() => setActiveCategory(item.id)}

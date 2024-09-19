@@ -28,7 +28,7 @@ function ProductCard({ item }) {
           <img
             src={item.image1}
             alt={item.slug}
-            className="max-h-full max-w-full object-contain lg:p-8 p-4 hover:scale-105 transition-all duration-300"
+            className="max-h-full max-w-full object-contain lg:p-8 p-4 lg:hover:scale-105 transition-all duration-300"
             onClick={() => {
               navigate(`/products/${item.slug}`);
               window.scroll(0, 0);
@@ -64,7 +64,7 @@ function ProductCard({ item }) {
         </p>
         <div className="">
           <button
-            className="bg-gray-200 hover:bg-primary hover:text-white w-full rounded-lg py-1 
+            className="bg-gray-200 lg:hover:bg-primary lg:hover:text-white w-full rounded-lg py-1 
             textfont-medium transition-all duration-500"
             onClick={openModal}
           >

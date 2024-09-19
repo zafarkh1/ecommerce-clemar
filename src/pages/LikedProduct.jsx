@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import ProductCard from "../utils/ProductCard";
 import { useStore } from "../zustand/useStore";
+import MessageModal from "../utils/Modal";
 
 function LikedProduct(props) {
   const { favorites } = useStore();
@@ -20,6 +21,7 @@ function LikedProduct(props) {
           </div>
         ))}
       </div>
+      <MessageModal />
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useApiData } from "../api/api";
 import { useTranslation } from "react-i18next";
+import { useApiData } from "../api/api";
 import ProductCard from "../utils/ProductCard";
 import { useLangStore } from "../zustand/useLangStore";
+import MessageModal from "../utils/Modal";
 
 function SubCategoriesProducts(props) {
   const { id } = useParams();
@@ -45,6 +46,7 @@ function SubCategoriesProducts(props) {
           </div>
         ))}
       </div>
+      <MessageModal />
     </div>
   );
 }

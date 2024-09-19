@@ -8,14 +8,14 @@ import { useStore } from "../zustand/useStore";
 import { Link } from "react-scroll";
 import Catalog from "../utils/Catalog";
 import { useApiData } from "../api/api";
-import debounce from "lodash.debounce"; // Import debounce function from lodash
+import debounce from "lodash.debounce";
 
-function Navbar(props) {
+function Navbar({ navbarLngHeight }) {
   const [searchedData, setSearchedData] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showError, setShowError] = useState(false); // State to manage error display
+  const [showError, setShowError] = useState(false);
   const searchRef = useRef(null);
   const catalogRef = useRef(null);
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ function Navbar(props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > navbarLngHeight) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -54,7 +54,7 @@ function Navbar(props) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [navbarLngHeight]);
 
   useEffect(() => {
     // Close the dropdown if clicking outside of it
@@ -115,8 +115,8 @@ function Navbar(props) {
   return (
     <div
       className={`bg-white fixed right-0 left-0 z-20 ${
-        isScrolled ? "top-0 shadow-lg" : "lg:top-20"
-      } transition-all duration-500`}
+        isScrolled ? "top-0 shadow-lg" : `top-[${navbarLngHeight}px]`
+      } transition-all duration-500 ease-in-out`}
     >
       <div
         className={`myContainer grid lg:grid-cols-12 grid-cols-5 items-center relative`}
@@ -129,7 +129,7 @@ function Navbar(props) {
         {/* Logo & Catalog */}
         <div className="lg:col-start-1 lg:col-span-3 col-span-full flexBetween lg:gap-8 gap-4 lg:mb-0 mb-4">
           <button
-            className="flexBetween bg-primary text-white lg:px-5 px-2 lg:py-2 py-1 rounded-md hover:bg-primary-dark transition duration-300"
+            className="flexBetween bg-primary text-white lg:px-5 px-2 lg:py-2 py-1 rounded-md lg:hover:bg-primary-dark transition duration-300"
             onClick={() => setIsCatalogOpen(!isCatalogOpen)}
           >
             <span className="icon mr-2">
@@ -146,6 +146,7 @@ function Navbar(props) {
             offset={-navbarHeight}
             onClick={() => {
               navigate("/");
+              window.scroll(0, 0);
             }}
           >
             <img
@@ -156,7 +157,7 @@ function Navbar(props) {
           </Link>
 
           <p
-            className="hover:text-primary transition duration-300 cursor-pointer lg:hidden text-sm font-medium"
+            className="lg:hover:text-primary transition duration-300 cursor-pointer lg:hidden text-sm font-medium"
             onClick={() => {
               navigate("/about");
               window.scroll(0, 0);
@@ -186,7 +187,7 @@ function Navbar(props) {
               />
               <button
                 onClick={handleSearchSubmit}
-                className={`search-button bg-primary text-white hover:bg-primary-dark lg:w-16 w-8 lg:h-10 h-8 flexCenter justify-center`}
+                className={`search-button bg-primary text-white lg:hover:bg-primary-dark lg:w-16 w-8 lg:h-10 h-8 flexCenter justify-center`}
               >
                 <MdOutlineSearch className="icon" />
               </button>
@@ -198,7 +199,7 @@ function Navbar(props) {
                 {searchedData.map((item, index) => (
                   <div
                     key={index}
-                    className="p-2 hover:bg-gray-100 cursor-pointer"
+                    className="p-2 lg:hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
                       navigate(`/products/${item.slug}`);
                       setSearchedData([]);
@@ -216,7 +217,7 @@ function Navbar(props) {
         {/* Like & About us */}
         <div className="lg:col-start-10 lg:col-span-3 flex items-center justify-end gap-8 col-span-1">
           <p
-            className="hover:text-primary transition duration-300 cursor-pointer hidden lg:block text-lg font-medium"
+            className="lg:hover:text-primary transition duration-300 cursor-pointer hidden lg:block text-lg font-medium"
             onClick={() => {
               navigate("/about");
               window.scroll(0, 0);
@@ -225,7 +226,7 @@ function Navbar(props) {
             {t("navbar.aboutUs")}
           </p>
           <div
-            className="flexBetween gap-2 cursor-pointer hover:text-primary transition duration-300"
+            className="flexBetween gap-2 cursor-pointer lg:hover:text-primary transition duration-300"
             onClick={() => {
               navigate("/likes");
               window.scroll(0, 0);

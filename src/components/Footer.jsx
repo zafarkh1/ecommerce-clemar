@@ -69,7 +69,7 @@ function Footer(props) {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary underline transition"
+                  className="lg:hover:text-primary underline transition"
                 >
                   {item.title}
                 </a>
@@ -81,7 +81,7 @@ function Footer(props) {
                   <li key={index}>
                     <a
                       href={item.link}
-                      className="icon hover:text-primary transition"
+                      className="icon lg:hover:text-primary transition"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -101,7 +101,7 @@ function Footer(props) {
             {products.map((item, index) => (
               <li key={index} className="lg:mt-4 mt-2">
                 <p
-                  className="cursor-pointer hover:text-primary transition"
+                  className="cursor-pointer lg:hover:text-primary transition"
                   onClick={() => {
                     navigate(`${item.link}`);
                     window.scroll(0, 0);
@@ -121,7 +121,7 @@ function Footer(props) {
             {info.map((item, index) => (
               <li key={index} className="lg:mt-4 mt-2">
                 <Link
-                  className="cursor-pointer hover:text-primary transition"
+                  className="cursor-pointer lg:hover:text-primary transition"
                   to={item.link}
                   spy={true}
                   smooth={true}
@@ -139,10 +139,23 @@ function Footer(props) {
         </div>
 
         {/* Map */}
-        <div className="lg:col-span-2 flex justify-end lg:mt-0 mt-2">
+        <div className="lg:col-span-2 justify-end lg:mt-0 mt-2 hidden xl:flex">
           <div>
-            <p className="text">{t("footer.address")}</p>
-            <p className="text">{t("footer.mapLinkText")}</p>
+            <p className="text mb-6">{t("footer.address")}</p>
+            <a
+              href="https://goo.gl/maps/yourGoogleMapLink"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="text mb-4">{t("footer.mapLinkText")}</p>
+              <iframe
+                title="sd"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.3711238582724!2d69.22436177533413!3d41.32707200360462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef5d2cd1b54ad%3A0x4d71548b356ff8ac!2sBunyodkor%20Street%2C%20Tashkent!5e0!3m2!1sen!2suz!4v1693487400385!5m2!1sen!2suz"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </a>
           </div>
         </div>
       </div>

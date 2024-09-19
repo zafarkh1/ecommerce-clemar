@@ -10,13 +10,24 @@ import LikedProduct from "./pages/LikedProduct";
 import About from "./pages/About";
 import SearchedProducts from "./pages/SearchedProducts";
 import SubCategoriesProducts from "./pages/SubCategoriesProducts";
+import { useEffect, useRef, useState } from "react";
 
 function App(props) {
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  const navbarLngRef = useRef(null);
+
+  useEffect(() => {
+    // Calculate and set the height of NavbarLng
+    if (navbarLngRef.current) {
+      setNavbarHeight(navbarLngRef.current.offsetHeight);
+    }
+  }, []);
+
   return (
     <>
-      <NavbarLng />
-      <Navbar />
-      <div className="mt-[96px]">
+      <NavbarLng ref={navbarLngRef} />
+      <Navbar navbarLngHeight={navbarHeight} />
+      <div className={`mt-[96px]`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categories/:id" element={<CategoryProducts />} />

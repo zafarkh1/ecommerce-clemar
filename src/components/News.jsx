@@ -15,7 +15,10 @@ function News(props) {
         {/* Translated heading */}
         <div className="grid lg:grid-cols-8 gap-8">
           {/* First Card */}
-          <div className="bg-primary text-white lg:col-span-5 lg:py-8 py-4 lg:px-6 px-3 rounded-lg flex transition-transform transform hover:scale-105 shadow-md hover:shadow-lg">
+          <div
+            className="bg-primary text-white lg:col-span-5 lg:py-8 py-4 lg:px-6 px-3 rounded-lg flex transition-transform 
+          transform lg:hover:scale-105 shadow-md lg:hover:shadow-lg"
+          >
             {/* Content */}
             <div className="lg:w-2/3 w-full flex-shrink-0 flex flex-col">
               <h5 className="heading5">{t("news.installmentTitle")}</h5>{" "}
@@ -27,7 +30,7 @@ function News(props) {
               {/* Translated text */}
               <div className="mt-auto">
                 <button
-                  className="lg:px-8 px-4 lg:py-3 py-2 lg:text-base text-sm bg-white text-primary hover:bg-white hover:text-primary transition-colors ease-in-out duration-300 shadow-sm hover:shadow-md active:scale-105 rounded-lg"
+                  className="lg:px-8 px-4 lg:py-3 py-2 lg:text-base text-sm bg-white text-primary transition-colors ease-in-out duration-300 shadow-sm lg:hover:shadow-md active:scale-105 rounded-lg"
                   onClick={() => {
                     navigate(`/news/2`);
                     window.scroll(0, 0);
@@ -50,7 +53,7 @@ function News(props) {
           </div>
 
           {/* Second Card */}
-          <div className="bg-blue-900 text-white lg:col-span-3 lg:py-8 py-4 lg:px-6 px-3 rounded-lg flex transition-transform transform hover:scale-105 shadow-md hover:shadow-lg">
+          <div className="bg-blue-900 text-white lg:col-span-3 lg:py-8 py-4 lg:px-6 px-3 rounded-lg flex transition-transform transform lg:hover:scale-105 shadow-md lg:hover:shadow-lg">
             <div className="lg:w-2/3 w-full flex-shrink-0 flex flex-col">
               <h5 className="heading5">{t("news.promotionsTitle")}</h5>{" "}
               {/* Translated title */}
@@ -61,7 +64,7 @@ function News(props) {
               {/* Translated text */}
               <div className="mt-auto">
                 <button
-                  className="lg:px-8 px-4 lg:py-3 py-2 lg:text-base text-sm bg-white text-primary transition-colors ease-in-out duration-300 shadow-sm hover:shadow-md active:scale-105 rounded-lg"
+                  className="lg:px-8 px-4 lg:py-3 py-2 lg:text-base text-sm bg-white text-primary transition-colors ease-in-out duration-300 shadow-sm lg:hover:shadow-md active:scale-105 rounded-lg"
                   onClick={() => {
                     navigate(`/news/3`);
                     window.scroll(0, 0);

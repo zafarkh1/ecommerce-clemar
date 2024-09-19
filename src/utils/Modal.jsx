@@ -148,7 +148,7 @@ function MessageModal() {
 
             <button
               type="submit"
-              className="w-full lg:py-4 py-2 lg:text-lg bg-primary hover:bg-primary-dark transition-all duration-300 text-white rounded-md"
+              className="w-full lg:py-4 py-2 lg:text-lg bg-primary lg:hover:bg-primary-dark transition-all duration-300 text-white rounded-md"
             >
               {loading ? t("MsgModal.loadingBtn") : t("MsgModal.btn")}
             </button>

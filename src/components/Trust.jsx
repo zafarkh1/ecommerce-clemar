@@ -74,7 +74,7 @@ function Trust(props) {
           <Slider {...settings}>
             {trustData.map((item, index) => (
               <div key={index} className="lg:pe-3 pe-3">
-                <div className="bg-primary rounded-lg flexCenter lg:h-40 h-25 lg:p-6 p-2 transition-transform transform hover:scale-105 shadow-md hover:shadow-lg">
+                <div className="bg-primary rounded-lg flexCenter lg:h-40 h-25 lg:p-6 p-2 transition-transform transform lg:hover:scale-105 shadow-md lg:hover:shadow-lg">
                   <img
                     src={item.image}
                     alt={item.name}

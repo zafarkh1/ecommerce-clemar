@@ -98,7 +98,7 @@ function Categories(props) {
                       <h5 className="heading5 lg:max-h-[20px] max-h-[18px]">
                         {getItemName(item)}
                       </h5>
-                      <div className="w-full lg:h-48 h-20 flexCenter lg:my-8 my-6 hover:scale-105 transition-all duration-300">
+                      <div className="w-full lg:h-48 h-20 flexCenter lg:my-8 my-6 lg:hover:scale-105 transition-all duration-300">
                         <img
                           src={item.image}
                           alt={item.slug}

@@ -1,8 +1,7 @@
 {
     "navbarLng": {
        "txtLocation": "Локация:",
-       "txtTashkent": "Ташкент",
-       "btnBonus": "Получить бонус"
+       "txtTashkent": "Ташкент"
     },
     "navbar": {
     "catalog": "Каталог",

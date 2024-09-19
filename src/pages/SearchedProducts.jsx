@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useApiData } from "../api/api";
 import ProductCard from "../utils/ProductCard";
 import { useTranslation } from "react-i18next";
+import MessageModal from "../utils/Modal";
 
 function SearchedProducts() {
   const [searchParams] = useSearchParams();
@@ -50,6 +51,7 @@ function SearchedProducts() {
           )}
         </div>
       )}
+      <MessageModal />
     </div>
   );
 }

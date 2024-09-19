@@ -1,10 +1,10 @@
 import { MdOutlineLocationOn, MdKeyboardArrowDown } from "react-icons/md";
 import { FaInstagram, FaTelegramPlane } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useLangStore } from "../zustand/useLangStore";
 
-function NavbarLng() {
+const NavbarLng = forwardRef((props, ref) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const { t, i18n } = useTranslation();
   const { currentLanguage, setCurrentLanguage } = useLangStore();
@@ -46,7 +46,7 @@ function NavbarLng() {
   ];
 
   return (
-    <div className="bg-primary text-white">
+    <div ref={ref} className="bg-primary text-white">
       <div className="container mx-auto flexBetween py-4">
         {/* Location */}
         <div className="flexBetween lg:gap-2 gap-1">
@@ -61,7 +61,7 @@ function NavbarLng() {
             href="https://www.google.com/maps/place/Tashkent"
             target="_blank"
             rel="noopener noreferrer"
-            className="text underline hover:text-gray-300 transition-colors duration-300"
+            className="text underline lg:hover:text-gray-300 transition-colors duration-300"
           >
             {t("navbarLng.txtTashkent")} {/* Translated city name */}
           </a>
@@ -109,22 +109,17 @@ function NavbarLng() {
                 <li
                   key={index}
                   onClick={() => handleLanguageChange(lang)}
-                  className="hover:text-gray-300 cursor-pointer transition-colors duration-300"
+                  className="lg:hover:text-gray-300 cursor-pointer transition-colors duration-300"
                 >
                   {lang.toUpperCase()}
                 </li>
               ))}
             </ul>
           </li>
-          <li className="hidden lg:block">
-            <button className="px-6 py-3 rounded-md text-primary bg-white font-medium hover:bg-gray-100 hover:shadow-md active:scale-105 transition-all duration-300">
-              {t("navbarLng.btnBonus")}
-            </button>
-          </li>
         </ul>
       </div>
     </div>
   );
-}
+});
 
 export default NavbarLng;
