@@ -17,9 +17,28 @@
   "bestProducts": {
     "heading": "Best Products"
   },
-  "choose": {
-    "heading": "Why choose us?"
+    "choose": {
+      "heading": "Why Work With Us",
+      "items": [
+        {
+          "title": "Official Dealer",
+          "description": "We work without intermediaries, offering the best prices."
+        },
+        {
+          "title": "Free Demonstration",
+          "description": "We bring the equipment to you for a 'test drive'."
+        },
+        {
+          "title": "Service",
+          "description": "Our service is available 24/7 across the country."
+        },
+        {
+          "title": "Training",
+          "description": "We provide training to ensure long-lasting equipment usage."
+        }
+      ]
   },
+  
   "trust": {
     "heading": "They trust us"
   },

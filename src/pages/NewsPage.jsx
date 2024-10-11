@@ -37,7 +37,7 @@ function NewsPage(props) {
               <img
                 src={news.image1}
                 alt={news?.[`name_${i18n.language}`]}
-                className="rounded-lg lg:my-6 my-3"
+                className="rounded-lg lg:my-6 my-3 md:h-96"
               />
             )
           )}
@@ -100,7 +100,7 @@ function NewsPage(props) {
                     : item?.[`description_${i18n.language}`]}
                 </p>
                 <p
-                  className="underline text-primary text"
+                  className="underline text-primary text cursor-pointer"
                   onClick={() => {
                     navigate(`/news/${item.id}`);
                     window.scroll(0, 0);

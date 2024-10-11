@@ -1,49 +1,58 @@
-import Skeleton from "react-loading-skeleton";
-import { useApiData } from "../api/api";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 function Choose() {
-  const { chooseData, loading } = useApiData();
   const { t } = useTranslation();
 
-  const skeletonBaseColor = "#e0e0e0"; // Custom base color
-  const skeletonHighlightColor = "#f5f5f5"; // Custom highlight color
-
-  const renderSkeleton = () => (
-    <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-4 lg:mt-10 mt-4">
-      {Array(4)
-        .fill()
-        .map((_, index) => (
-          <div key={index}>
-            <Skeleton
-              height="80px"
-              borderRadius="0.5rem"
-              baseColor={skeletonBaseColor} // Set base color
-              highlightColor={skeletonHighlightColor} // Set highlight color
-            />
-          </div>
-        ))}
-    </div>
-  );
+  const items = [
+    {
+      id: 1,
+      title: t("choose.items.0.title"),
+      description: t("choose.items.0.description"),
+      src: "/assets/workWithUs1.svg",
+    },
+    {
+      id: 2,
+      title: t("choose.items.1.title"),
+      description: t("choose.items.1.description"),
+      src: "/assets/workWithUs2.svg",
+    },
+    {
+      id: 3,
+      title: t("choose.items.2.title"),
+      description: t("choose.items.2.description"),
+      src: "/assets/workWithUs3.svg",
+    },
+    {
+      id: 4,
+      title: t("choose.items.3.title"),
+      description: t("choose.items.3.description"),
+      src: "/assets/workWithUs4.svg",
+    },
+  ];
 
   return (
     <div id="choose">
       <div className="myContainer">
         <h2 className="heading2">{t("choose.heading")}</h2>
-        {loading ? (
-          renderSkeleton()
-        ) : (
-          <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-8 gap-4 lg:mt-10 mt-4">
-            {chooseData.map((item, index) => (
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 lg:gap-8 gap-4 lg:mt-10 mt-4">
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="bg-[#f7f7f7] flex flex-col gap-2 items-center py-6 px-6 border rounded-lg"
+            >
               <img
-                key={index}
-                src={item.image}
-                alt={index}
-                className="lg:h-20 w-auto"
+                src={item.src}
+                alt={item.title}
+                className="h-16 w-16 filter-blue"
               />
-            ))}
-          </div>
-        )}
+              <h3 className="lg:text-xl text-base font-semibold mt-4">
+                {item.title}
+              </h3>
+              <p className="text text-center">{item.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

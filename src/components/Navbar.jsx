@@ -150,7 +150,7 @@ function Navbar({ navbarLngHeight }) {
             }}
           >
             <img
-              src="https://clemar.uz/static/media/logo.429f48cab1bd213fe676.png"
+              src="https://clemar.uz/static/media/logo.ee5ef51143138b72c5b6.png"
               alt="logo"
               className="lg:h-10 h-8 cursor-pointer"
             />

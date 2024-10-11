@@ -69,6 +69,10 @@
   height: 300px;
 }
 
+.filter-blue {
+  filter: hue-rotate(190deg) saturate(2);
+}
+
 @media (max-width: 512px) {
   .showcaseSkeleton {
     height: 150px;

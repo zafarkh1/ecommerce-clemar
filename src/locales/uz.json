@@ -18,8 +18,26 @@
     "heading": "Eng yaxshi mahsulotlar"
   },
   "choose": {
-    "heading": "Nima uchun bizni tanlashadi?"
-  },
+      "heading": "Nima uchun biz bilan ishlash kerak",
+      "items": [
+        {
+          "title": "Rasmiy diler",
+          "description": "Biz vositachilarsiz ishlaymiz va eng yaxshi narxlarni taklif qilamiz."
+        },
+        {
+          "title": "Bepul namoyish",
+          "description": "Uskunani testdan o'tkazish uchun sizga olib kelamiz."
+        },
+        {
+          "title": "Xizmat",
+          "description": "Xizmatimiz butun mamlakat bo'ylab 24/7 mavjud."
+        },
+        {
+          "title": "O'quv",
+          "description": "Biz uskunaning uzoq muddatli ishlatilishini ta'minlash uchun o'quv taqdim etamiz."
+        }
+      ]
+   },
   "trust": {
     "heading": "Bizga ishonishadi"
   },
