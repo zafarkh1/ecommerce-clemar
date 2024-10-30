@@ -149,11 +149,16 @@ function Navbar({ navbarLngHeight }) {
               window.scroll(0, 0);
             }}
           >
-            <img
+            {/* <img
               src="https://clemar.uz/static/media/logo.ee5ef51143138b72c5b6.png"
               alt="logo"
               className="lg:h-10 h-8 cursor-pointer"
-            />
+            /> */}
+            <p className="gradient-text lg:text-6xl text-4xl tracking-widest font-medium cursor-pointer">
+              Luxera
+              {/* <span className="logo-letter">L</span>u
+              <span className="logo-letter">X</span>era */}
+            </p>{" "}
           </Link>
 
           <p
